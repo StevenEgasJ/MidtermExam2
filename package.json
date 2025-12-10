@@ -1,0 +1,17 @@
+{
+  "name": "ws19rest",
+  "version": "1.0.0",
+  "description": "Computer Store",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Steven Egas",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "express": "^5.2.1",
+    "mongoose": "^9.0.1"
+  }
+}
