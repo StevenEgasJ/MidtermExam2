@@ -5,7 +5,8 @@ const mongoose = require('mongoose');
 
 // Prefer environment variable; fall back to local 'microphone' database
 const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/microphone';
-mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true });
+// Do not pass deprecated/unsupported options to mongoose.connect; current drivers handle defaults.
+mongoose.connect(mongoUri);
 
 const db = mongoose.connection;
 db.on('error', (error) => console.error('Mongo connection error:', error));
