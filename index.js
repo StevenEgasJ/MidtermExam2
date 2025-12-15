@@ -4,10 +4,11 @@ const app = express();
 const mongoose = require('mongoose');
 
 // Prefer environment variable; fall back to local 'microphone' database
-const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/microphone';
-// Diagnostic: log which URI (or placeholder) we are attempting to use.
-console.log('Attempting MongoDB connection to:', process.env.MONGODB_URI ? 'MONGODB_URI (from env)' : mongoUri);
-// Connect with default options; modern drivers manage parsing and topology automatically.
+// Default to Atlas cluster0 microphone DB when no MONGODB_URI is provided.
+const defaultAtlas = 'mongodb+srv://juhuh3001_db_user:Espe123@cluster0.olchaay.mongodb.net/microphone?retryWrites=true&w=majority&appName=Cluster0';
+const mongoUri = process.env.MONGODB_URI || defaultAtlas;
+// Diagnostic: log which URI source we are attempting to use (do not print secrets in production).
+console.log('Attempting MongoDB connection to:', process.env.MONGODB_URI ? 'MONGODB_URI (from env)' : 'Atlas default');
 mongoose.connect(mongoUri);
 
 const db = mongoose.connection;
