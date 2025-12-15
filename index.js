@@ -11,14 +11,15 @@ db.on('error', (error) => console.error('Mongo connection error:', error));
 db.once('open', () => console.log('System connected to MongoDb Database'));
 app.use(express.json());
 
-const productRoutes = require('./routes/products');
-const userRoutes = require('./routes/users');
+const microphoneRoutes = require('./routes/microphone');
 
-app.use('/api/products', productRoutes);
-app.use('/api/users', userRoutes);
+app.use('/api/microphone', microphoneRoutes);
 
 app.listen(port, '0.0.0.0', () => {
-    console.log(`Users service is running on port ${port}`);
+    console.log(`Microphone service is running on port ${port}`);
 });
 
 module.exports = app;
+
+
+
