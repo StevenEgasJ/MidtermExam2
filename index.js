@@ -3,8 +3,9 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 
-const mongoUri = process.env.MONGODB_URI || 'mongodb+srv://juhuh3001_db_user:Espe123@cluster0.olchaay.mongodb.net/test?retryWrites=true&w=majority&appName=Cluster0';
-mongoose.connect(mongoUri);
+// Prefer environment variable; fall back to local 'microphone' database
+const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/microphone';
+mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const db = mongoose.connection;
 db.on('error', (error) => console.error('Mongo connection error:', error));
